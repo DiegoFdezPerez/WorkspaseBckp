@@ -1,0 +1,40 @@
+package Main;
+//import com.mysql.*;
+import java.sql.*;
+
+public class Main {
+
+	public static void main(String[] args) throws SQLException {
+			Connection myConn = null;
+			Statement myStmt = null;
+			ResultSet myRs = null;
+			
+			try {
+				//Conseguir conexion a la base de datos
+				
+				myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","DFP","DiegoFern@ndezPerez");
+			 
+				System.out.println("Database connection succesful\n");
+				
+				// Crear Statement
+				
+			myStmt = myConn.createStatement();
+			
+			//Ejecutar consulta SQL
+			
+		myRs = myStmt.executeQuery("select * from employees");
+		
+		//Procesar el conjunto resultante
+		
+		while (myRs.next()) {
+			System.out.println(myRs.getString("last name")+", "+ myRs.getString("first name"));
+		}
+			}
+			
+			catch (Exception exc) {
+				exc.printStackTrace();
+			}
+
+	}
+
+}

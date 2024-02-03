@@ -11,9 +11,14 @@ public class Main {
 			try {
 				myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","DFP","Kyba");
 				StoredProcedures SP = new StoredProcedures();
-				SP.StoredPIn(myConn);
+				/*SP.StoredPIn(myConn);
 				SP.StoredPInOut(myConn);
 				SP.StoredPOut(myConn);
+				*/
+				// Transacciones
+				Transaction Trans =new Transaction ();
+				Trans.Execute(myConn);
+				
 			}
 		/*	try {
 				//Conseguir conexion a la base de datos

@@ -53,6 +53,7 @@ public class Transaction {
 				myConn.rollback();
 			
 		System.out.println("Lista final: \n");
+		Thread.sleep(2000);
 		
 		    MostrarDepIng(myConn);	
 			
@@ -64,6 +65,8 @@ public class Transaction {
 		finally {
 			if (myConn!=null)
 				myConn.close();
+			
+			myConn.setAutoCommit(true);
 		}
 	}
 

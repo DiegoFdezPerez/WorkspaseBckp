@@ -16,9 +16,10 @@ public class Main {
 				SP.StoredPOut(myConn);
 				*/
 				// Transacciones
-				Transaction Trans =new Transaction ();
-				Trans.Execute(myConn);
-				
+				/*Transaction Trans =new Transaction ();
+				Trans.Execute(myConn);*/
+				Metadata MD= new Metadata();
+				MD.GetMetadata(myConn);
 			}
 		/*	try {
 				//Conseguir conexion a la base de datos
@@ -49,7 +50,7 @@ public class Main {
 			}
 /*finally {
 	if (myConn != null)
-myConn.close();
+myConn.close(); 
 	if (myStmt != null)
 myStmt.close();
 	if (myRs != null)

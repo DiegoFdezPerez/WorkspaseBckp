@@ -52,7 +52,7 @@ public class Metadata {
 			 Thread.sleep(500);
 			 ResultSetMetaData rsMetadata = myRs.getMetaData();
 			 int columnCount = rsMetadata.getColumnCount();
-			 System.out.println("\n" + "Cantidad de columnas: " + columnCount + "\n");
+			 System.out.println( "Cantidad de columnas: " + columnCount + "\n");
 			 Thread.sleep(1000);
 			 System.out.println( "Metadatos de las columnas: "  + "\n");
 			 Thread.sleep(1000);

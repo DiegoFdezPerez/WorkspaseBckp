@@ -1,0 +1,43 @@
+package Main;
+
+import java.sql.*;
+
+public class BLOB {
+	public void BLOBS  (Connection myConn)  throws SQLException  {
+
+		Statement myStmt=null;
+		
+		try {
+         myStmt=myConn.createStatement();
+         
+         DatabaseMetaData DBMD = null;
+         String nombre;
+         boolean existeResume = false;
+          
+         DBMD = myConn.getMetaData();
+         ResultSet myRs = DBMD.getTables("demo", null , null, null);
+	     while (myRs.next()) {
+			nombre = myRs.getString("COLUMN_NAME");
+			
+			if (nombre.equals("resume"))
+				existeResume=true;
+		 }
+	     
+	     if (!existeResume) {
+         int i= myStmt.executeUpdate("alter table employees add column resume BLOB");
+			System.out.println(i);}
+		}
+		
+		catch (Exception exc) {
+			exc.printStackTrace();
+		}
+	finally {
+	
+	}
+	}
+
+	
+		
+	}
+
+

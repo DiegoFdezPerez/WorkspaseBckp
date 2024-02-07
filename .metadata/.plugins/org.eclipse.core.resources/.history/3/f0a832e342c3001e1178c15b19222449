@@ -1,0 +1,28 @@
+package Main;
+
+import java.sql.*;
+
+public class BLOB {
+	public void BLOBS  (Connection myConn)  throws SQLException  {
+
+		Statement myStmt=null;
+		
+		try {
+         myStmt=myConn.createStatement();
+         int i= myStmt.executeUpdate("alter table employee add column resume BLOB");
+			System.out.println(i);
+		}
+		
+		catch (Exception exc) {
+			exc.printStackTrace();
+		}
+	finally {
+	
+	}
+	}
+
+	
+		
+	}
+
+

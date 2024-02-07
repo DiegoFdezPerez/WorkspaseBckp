@@ -1,0 +1,66 @@
+package Main;
+
+import java.sql.*;
+import java.io.*;
+
+public class BLOB {
+	public void BLOBS  (Connection myConn)  throws SQLException  {
+
+		Statement myStmt=null;
+		
+		try {
+			
+	     //Crear columna resume si no existe
+			
+         myStmt=myConn.createStatement();
+         
+         DatabaseMetaData DBMD = null;
+         String nombre;
+         boolean existeResume = false;
+          
+         DBMD = myConn.getMetaData();
+        
+         ResultSet myRs = DBMD.getColumns(null, null , "employees", null);
+	     
+         while (myRs.next()&& !existeResume) {
+			nombre = myRs.getString("COLUMN_NAME");
+			
+			if (nombre.equals("resume"))
+				existeResume=true;
+		 }
+	     
+	     if (!existeResume) {
+         int i= myStmt.executeUpdate("alter table employees add column resume BLOB");
+			System.out.println(i);}
+	     
+	     // Insertar BLOB
+	     //Preparar statement
+	     String sql = "update employees set resume =?" + " where email='john.doe@foo.com'";
+	     PreparedStatement myPStmt = myConn.prepareStatement(sql);
+	     
+	     // Setear parametro para el nombre de archivo de resume
+	     //manejador para wl archivo local
+	     File TheFile = new File ("SAMPLE_RESUME.pdf");
+	     FileInputStream input = new FileInputStream(TheFile);
+	     
+	     //Actualizar BD con informacion binaria  
+	     myPStmt.setBinaryStream(1,input);
+	     
+	    // Ejecutar statement
+	     myPStmt.execute();
+	     myPStmt.executeUpdate("update employees set resume = null where email='john.doe@foo.com'");
+		}
+		
+		catch (Exception exc) {
+			exc.printStackTrace();
+		}
+	finally {
+	
+	}
+	}
+
+	
+		
+	}
+
+

@@ -48,7 +48,7 @@ public class Metadata {
 			 //Result set metadata
 			 
 			 myStmt =myConn.createStatement();
-			 myRs = myStmt.executeQuery("select id, last_name, first_name, salary from employees");
+			 myRs = myStmt.executeQuery("select id, last_name, first_name, email, salary, department, resume from employees");
 			 Thread.sleep(500);
 			 ResultSetMetaData rsMetadata = myRs.getMetaData();
 			 int columnCount = rsMetadata.getColumnCount();

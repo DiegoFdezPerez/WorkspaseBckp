@@ -18,8 +18,19 @@ public class Main {
 				// Transacciones
 				/*Transaction Trans =new Transaction ();
 				Trans.Execute(myConn);*/
-				Metadata MD= new Metadata();
-				MD.GetMetadata(myConn);
+				//BLOB
+				BLOB BL= new BLOB();
+				BL.InsertBLOB(myConn);
+				BL.ReadBLOB(myConn);
+				
+				//CLOB
+				 CLOB CL = new CLOB();
+				 CL.CrearColumnaCLOB(myConn);
+				 CL.InsertCLOB(myConn);
+			     CL.ReadCLOB(myConn);
+				//Metadata
+				/*Metadata MD= new Metadata();
+				MD.GetMetadata(myConn);*/
 			}
 		/*	try {
 				//Conseguir conexion a la base de datos

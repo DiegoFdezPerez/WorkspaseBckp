@@ -1,0 +1,16 @@
+package Main;
+
+import java.sql.*;
+
+public class Connect {
+	
+	public Connection getConnManual() throws SQLException {
+		Connection myConn = null;
+		try {
+			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","DFP","Kyba");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return myConn;
+	}
+}

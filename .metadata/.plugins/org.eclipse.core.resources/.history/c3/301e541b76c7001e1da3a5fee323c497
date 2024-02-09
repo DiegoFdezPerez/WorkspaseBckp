@@ -10,7 +10,7 @@ public class Main {
 			ResultSet myRs = null;*/
 			try {
 				Connect conn = new Connect();
-				myConn =conn.getConnProperties();
+				myConn =conn.getConnManual();
 				StoredProcedures SP = new StoredProcedures();
 				/*SP.StoredPIn(myConn);
 				SP.StoredPInOut(myConn);

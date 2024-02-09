@@ -34,7 +34,7 @@ public class CLOB {
 		     if (!existeResume) {
 	         myStmt.executeUpdate("alter table employees add column resume_text LONGTEXT");
 			
-		       }
+		      }
 		     
 		}
 		

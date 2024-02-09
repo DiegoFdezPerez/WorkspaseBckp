@@ -9,8 +9,7 @@ public class Main {
 			/*Statement myStmt = null;
 			ResultSet myRs = null;*/
 			try {
-				Connect conn = new Connect();
-				myConn =conn.getConnProperties();
+				myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","DFP","Kyba");
 				StoredProcedures SP = new StoredProcedures();
 				/*SP.StoredPIn(myConn);
 				SP.StoredPInOut(myConn);

@@ -10,8 +10,8 @@ public class Connect {
 		Connection myConn = null;
 		try {
 			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","DFP","Kyba");
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
 		}
 		return myConn;
 	}

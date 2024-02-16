@@ -9,9 +9,14 @@ public class Main {
 		Statement myStmt = null;
 	    ResultSet myRs = null;
 	    try {
+	    	
+	    	
 		
 		myConn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/test1","postgres","Kyba");
 		System.out.println("Conexion Exitosa");
+		
+		StoredProcedures SP = new StoredProcedures();
+		SP.StoredPIn(myConn);
 		
 		myStmt= myConn.createStatement();
 		
@@ -20,6 +25,8 @@ public class Main {
 		while(myRs.next()) {
 			
 			System.out.println(myRs.getInt("id")+" , " + myRs.getString("nombre") );
+			
+			
 		}
 	    }
 		catch (Exception ex) {

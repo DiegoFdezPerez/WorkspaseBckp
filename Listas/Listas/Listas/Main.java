@@ -9,7 +9,7 @@ public class Main {
 			Scanner sc= new Scanner(System.in);
 			
 			while(true) {
-			System.out.println("Selecciona paginas/impresora/salir: ");
+			System.out.println("Selecciona paginas/impresora/sets/salir: ");
 			String respuesta = sc.nextLine();
 			
 			if (respuesta.equalsIgnoreCase("salir")) {
@@ -29,6 +29,11 @@ public class Main {
 			ic.impresoraCompartida();
 			break;
 			}
+			else if (respuesta.equalsIgnoreCase("sets")) {
+				Colecciones col = new Colecciones();
+				col.Sets();
+				break;
+				}
 			else 
 				
 				System.out.println("Resuesta no valida");

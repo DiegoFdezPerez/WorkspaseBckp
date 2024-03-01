@@ -9,7 +9,7 @@ public class Main {
 			Scanner sc= new Scanner(System.in);
 			
 			while(true) {
-			System.out.println("Selecciona paginas/impresora/sets/salir: ");
+			System.out.println("Selecciona paginas/impresora/sets/arboles/salir: ");
 			String respuesta = sc.nextLine();
 			
 			if (respuesta.equalsIgnoreCase("salir")) {
@@ -34,6 +34,32 @@ public class Main {
 				col.Sets();
 				break;
 				}
+			
+			else if(respuesta.equalsIgnoreCase("arboles")) {
+			
+				NodoBinario n1 = new NodoBinario(1,null,null);
+				NodoBinario n3 = new NodoBinario(3,null,null);
+				NodoBinario n2 = new NodoBinario(2,n1,n3);
+				NodoBinario n7 = new NodoBinario(8,null,null);
+				NodoBinario n6 = new NodoBinario(5,null,n7);
+				NodoBinario root = new NodoBinario(4,n2,n6);
+				ArbolBinarioBusq abb=new ArbolBinarioBusq(root);
+				
+				abb.InsertarNodo(6,root);
+				abb.InsertarNodo(7,root);
+				abb.EliminarNodo(n1,root);
+				
+				System.out.println("Arbol en preorden:");
+				abb.ImprimirPreorden(root);
+				
+				System.out.println("\n" + "Arbol en inorden:");
+				abb.ImprimirInorden(root);
+				
+				System.out.println("\n" + "Arbol en postorden:");
+				abb.ImprimirPostorden(root);
+				
+				break;
+			}
 			else 
 				
 				System.out.println("Resuesta no valida");

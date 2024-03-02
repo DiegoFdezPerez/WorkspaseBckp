@@ -2,22 +2,22 @@ package Listas;
 
 public class NodoBinario {
 
-	private Object elemento;
+	private int elemento;
 	private NodoBinario nodoIzq;
 	private NodoBinario nodoDer;
 	
-	public NodoBinario(Object o) {
+	public NodoBinario(int o) {
 		this(o,null,null);
 	}
 	
-	public NodoBinario (Object o, NodoBinario izq, NodoBinario der) {
+	public NodoBinario (int o, NodoBinario izq, NodoBinario der) {
 		elemento = o;
 		nodoIzq = izq;
 		nodoDer = der;
 	}
 	
-	public void setElemento (Object o) {
-		elemento = 0;
+	public void setElemento (int o) {
+		elemento = o;
 	}
 	
 	public void setNodoIzq(NodoBinario i) {
@@ -28,15 +28,15 @@ public class NodoBinario {
 		nodoDer = d;
 	}
 	
-	public Object getElemento(){
+	public int getElemento(){
 		return elemento;
 	}
 	
-	public Object getNodoIzq() {
+	public NodoBinario getNodoIzq() {
 		return nodoIzq;
 	}
 	
-	public Object getNodoDer() {
+	public NodoBinario getNodoDer() {
 		return nodoDer;
 	}
 }

@@ -1,5 +1,5 @@
 package Listas;
-import java.util.*;
+
 
 public class ArbolBinarioBusq {
 
@@ -9,10 +9,14 @@ public class ArbolBinarioBusq {
 		raiz = null;
 	}
 	
-	ArbolBinarioBusq(Object o){
-		raiz = new NodoBinario (o);
+	ArbolBinarioBusq(NodoBinario o){
+		raiz = o;
 	}
 	
+	protected void setArbolBinarioBusqueda (NodoBinario o) {
+		
+		raiz =o;
+	}
 	public boolean EstaVacio ( ) {
 		return raiz == null;
 	}
@@ -28,12 +32,12 @@ public class ArbolBinarioBusq {
 		System.out.print(nodo.getElemento() + " ");
 		
 		if(nodo.getNodoIzq()!=null) {
-			ImprimirPreorden((NodoBinario) nodo.getNodoIzq());
+			ImprimirPreorden(nodo.getNodoIzq());
 
 		}
 		
 		if(nodo.getNodoDer() != null) {
-			ImprimirPreorden((NodoBinario) nodo.getNodoDer());
+			ImprimirPreorden(nodo.getNodoDer());
 		}}
 	 else 
 			System.out.println("El arbol esta vacio");
@@ -46,13 +50,13 @@ public class ArbolBinarioBusq {
 			
 		
 		if(nodo.getNodoIzq()!=null) {
-				ImprimirInorden((NodoBinario) nodo.getNodoIzq());
+				ImprimirInorden(nodo.getNodoIzq());
 		}
 
 		System.out.print(nodo.getElemento() + " ");
 			
 		if(nodo.getNodoDer() != null) {
-			ImprimirInorden((NodoBinario) nodo.getNodoDer());
+			ImprimirInorden( nodo.getNodoDer());
 		}
 		}
 	  else 
@@ -66,12 +70,12 @@ public class ArbolBinarioBusq {
 	  if(nodo != null) {
 			
 		if(nodo.getNodoIzq()!=null) {
-			ImprimirPostorden((NodoBinario) nodo.getNodoIzq());
+			ImprimirPostorden( nodo.getNodoIzq());
 
 		}
 		
 		if(nodo.getNodoDer() != null) {
-			ImprimirPostorden((NodoBinario) nodo.getNodoDer());
+			ImprimirPostorden( nodo.getNodoDer());
 		}
 		
 		System.out.print(nodo.getElemento() + " ");
@@ -92,7 +96,7 @@ public class ArbolBinarioBusq {
 		}
 		else if(i<(int) a.getElemento()) {
 			if(a.getNodoIzq()!=null)
-			InsertarNodo(i,(NodoBinario) a.getNodoIzq());
+			InsertarNodo(i, a.getNodoIzq());
 			else {
 				NodoBinario nuevo= new NodoBinario(i);
 				a.setNodoIzq(nuevo);
@@ -102,7 +106,7 @@ public class ArbolBinarioBusq {
 		}
 		else if(i>(int) a.getElemento()) {
 			if(a.getNodoDer()!=null)
-			InsertarNodo(i,(NodoBinario) a.getNodoDer());
+			InsertarNodo(i, a.getNodoDer());
 			else {
 				NodoBinario nuevo= new NodoBinario(i);
 				a.setNodoDer(nuevo);
@@ -115,23 +119,23 @@ public class ArbolBinarioBusq {
 	public void EliminarNodo (NodoBinario el, NodoBinario a)
 	{   
 		
-		if((int) el.getElemento() == (int) a.getElemento()) {
+		if( el.getElemento() ==  a.getElemento()) {
 			
 			EliminarRaiz(el);
 			return;
 		}
 		
-		else if ((int) el.getElemento() < (int) a.getElemento()) {
+		else if ( el.getElemento() <  a.getElemento()) {
 			
 			if (a.getNodoIzq()!=null)
-			EliminarNodo(el, (NodoBinario) a.getNodoIzq(),false);
+			EliminarNodo(el,  a.getNodoIzq(),false);
 		}
 
-		else if ((int) el.getElemento() > (int) a.getElemento()) {
+		else if (el.getElemento() >  a.getElemento()) {
 			if (a.getNodoDer()!=null)
-			EliminarNodo(el, (NodoBinario) a.getNodoDer(),false);
+			EliminarNodo(el,  a.getNodoDer(),false);
 		}
-		
+		else
 		System.out.println("Nodo no encontrado");
 		return;
 	}
@@ -139,7 +143,7 @@ public class ArbolBinarioBusq {
 	public void EliminarNodo (NodoBinario el, NodoBinario a, boolean isLeaf)
 	{   
 		
-		if((int) el.getElemento() == (int) a.getElemento()) {
+		if( el.getElemento() ==  a.getElemento()) {
 			
 			if (a.getNodoDer()==null && a.getNodoIzq()==null)
 				isLeaf = true;
@@ -148,7 +152,7 @@ public class ArbolBinarioBusq {
 				EliminarHoja(raiz,a);
 			}
 			else {
-			    EliminarNodoIntermedio(raiz,a);	
+			    EliminarNodoIntermedio(raiz,el);	
 			}
 			return;
 		}
@@ -156,15 +160,15 @@ public class ArbolBinarioBusq {
 		else if ((int) el.getElemento() < (int) a.getElemento()) {
 			
 			if (a.getNodoIzq()!=null)
-			EliminarNodo(el, (NodoBinario) a.getNodoIzq(),false);
+			EliminarNodo(el,  a.getNodoIzq(),false);
 			
 		}
 
-		else if ((int) el.getElemento() > (int) a.getElemento()) {
+		else if ( el.getElemento() >  a.getElemento()) {
 			if (a.getNodoDer()!=null)
-			EliminarNodo(el, (NodoBinario) a.getNodoDer(),false);
+			EliminarNodo(el,  a.getNodoDer(),false);
 		}
-		
+		else
 		System.out.println("Nodo no encontrado");
 		return;
 	}
@@ -176,25 +180,23 @@ public class ArbolBinarioBusq {
 			
 			if(nodo.getNodoIzq()==el) {
 					nodo.setNodoIzq(null);
-					System.out.println("Nodo eliminado correctamente");
+					System.out.println("Nodo eliminado correctamente. \n");
 					return;
 			}
 			else if(nodo.getNodoDer()==el) {
-					nodo.setNodoIzq(null);
-					System.out.println("Nodo eliminado correctamente");
+					nodo.setNodoDer(null);
+					System.out.println("Nodo eliminado correctamente. \n");
 					return;
 		    }
-			else if(nodo.getNodoIzq() != null && (int) el.getElemento()< (int) nodo.getElemento()) {
-				EliminarHoja ((NodoBinario) nodo.getNodoIzq(),el);
+			else if(nodo.getNodoIzq() != null &&  el.getElemento()<  nodo.getElemento()) {
+				EliminarHoja ( nodo.getNodoIzq(),el);
 			}
-			else if(nodo.getNodoDer() != null && (int) el.getElemento()> (int) nodo.getElemento()) {
-				EliminarHoja ((NodoBinario) nodo.getNodoDer(),el);
+			else if(nodo.getNodoDer() != null &&  el.getElemento()>  nodo.getElemento()) {
+				EliminarHoja ( nodo.getNodoDer(),el);
 			}
 			}
 		  else 
 				System.out.println("El arbol esta vacio");
-		  
-		  System.out.println( "Nodo no encontrado en eliminar hoja (Esto no deberia aparecer nunca)");
 		  
 		}
 	
@@ -207,25 +209,25 @@ public class ArbolBinarioBusq {
 				
 				    if (el.getNodoIzq()!=null && el.getNodoDer()!= null) {
 				    	
-				     if ((int)el.getElemento()-(int) BuscarMayorSubArbolIzq(el).getElemento()>(int) BuscarMenorSubArbolDer(el).getElemento()-(int)el.getElemento()) {
+				     if (el.getElemento()- BuscarMayorSubArbolIzq(el).getElemento()>= BuscarMenorSubArbolDer(el).getElemento()-el.getElemento()) {
 				    	 
 				    	 //f1
 				    	 NodoBinario temp = BuscarMenorSubArbolDer(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoIzq(temp);
 				    	 
 				    	 
 				    }
 				 	
-				     else if ((int)el.getElemento()-(int) BuscarMayorSubArbolIzq(el).getElemento()<(int) BuscarMenorSubArbolDer(el).getElemento()-(int)el.getElemento()) {
+				     else if (el.getElemento()- BuscarMayorSubArbolIzq(el).getElemento()< BuscarMenorSubArbolDer(el).getElemento()-el.getElemento()) {
 				    	 
 				    	 //f2
 				    	 NodoBinario temp = BuscarMayorSubArbolIzq(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoIzq(temp);
 				    	 
 				    	 
@@ -235,9 +237,9 @@ public class ArbolBinarioBusq {
 				    	
 				    	//f1
 				    	 NodoBinario temp = BuscarMenorSubArbolDer(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoIzq(temp);
 				    	
 				    }
@@ -245,38 +247,37 @@ public class ArbolBinarioBusq {
 				    	
 				    	//f2
 				    	NodoBinario temp = BuscarMayorSubArbolIzq(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoIzq(temp);
 				    }
 				    
-					System.out.println("Nodo eliminado correctamente");
 					return;
 			}
 			else if(nodo.getNodoDer()==el) {
 					
 				if (el.getNodoIzq()!=null && el.getNodoDer()!= null) {
 			    	
-				     if ((int)el.getElemento()-(int) BuscarMayorSubArbolIzq(el).getElemento()>(int) BuscarMenorSubArbolDer(el).getElemento()-(int)el.getElemento()) {
+				     if (el.getElemento()- BuscarMayorSubArbolIzq(el).getElemento()>= BuscarMenorSubArbolDer(el).getElemento()-el.getElemento()) {
 				    	 
 				    	 //f1
 				    	 NodoBinario temp = BuscarMenorSubArbolDer(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoDer(temp);
 				    	 
 				    	 
 				    }
 				 	
-				     else if ((int)el.getElemento()-(int) BuscarMayorSubArbolIzq(el).getElemento()<(int) BuscarMenorSubArbolDer(el).getElemento()-(int)el.getElemento()) {
+				     else if (el.getElemento()- BuscarMayorSubArbolIzq(el).getElemento()< BuscarMenorSubArbolDer(el).getElemento()-el.getElemento()) {
 				    	 
 				    	 //f2
 				    	 NodoBinario temp = BuscarMayorSubArbolIzq(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoDer(temp);
 				    	 
 				    	 
@@ -286,9 +287,9 @@ public class ArbolBinarioBusq {
 				    	
 				    	//f1
 				    	 NodoBinario temp = BuscarMenorSubArbolDer(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoDer(temp);
 				    	
 				    }
@@ -296,9 +297,9 @@ public class ArbolBinarioBusq {
 				    	
 				    	//f2
 				    	NodoBinario temp = BuscarMayorSubArbolIzq(el);
-				    	 EliminarNodo (raiz, temp);
-				    	 temp.setNodoIzq((NodoBinario) el.getNodoIzq());
-				    	 temp.setNodoDer((NodoBinario) el.getNodoDer());
+				    	 EliminarNodo (temp, raiz);
+				    	 temp.setNodoIzq( el.getNodoIzq());
+				    	 temp.setNodoDer( el.getNodoDer());
 				    	 nodo.setNodoDer(temp);
 				    }
 				    
@@ -306,19 +307,100 @@ public class ArbolBinarioBusq {
 					System.out.println("Nodo eliminado correctamente");
 					return;
 		    }
-			else if(nodo.getNodoIzq() != null && (int) el.getElemento()< (int) nodo.getElemento()) {
-				EliminarNodoIntermedio ((NodoBinario) nodo.getNodoIzq(),el);
+			else if(nodo.getNodoIzq() != null &&  el.getElemento()< nodo.getElemento()) {
+				EliminarNodoIntermedio ( nodo.getNodoIzq(),el);
 			}
-			else if(nodo.getNodoDer() != null && (int) el.getElemento()> (int) nodo.getElemento()) {
-				EliminarNodoIntermedio ((NodoBinario) nodo.getNodoDer(),el);
+			else if(nodo.getNodoDer() != null && el.getElemento()> nodo.getElemento()) {
+				EliminarNodoIntermedio ( nodo.getNodoDer(),el);
 			}
 			}
 		  else 
 				System.out.println("El arbol esta vacio");
 		  
-		  System.out.println( "Nodo no encontrado en eliminar hoja (Esto no deberia aparecer nunca)");
-		  
 		}
+	
+	    public NodoBinario BuscarMayorSubArbolIzq (NodoBinario nodo) {
+	    	
+	    	if(nodo.getNodoIzq()!= null) {
+	    	 return	BuscarMayorSubArbolIzq2( nodo.getNodoIzq());
+	    	}
+	    	else 
+	    	  return nodo;
+	    }
+	    
+ public NodoBinario BuscarMayorSubArbolIzq2 (NodoBinario nodo) {
+	    	
+	    	if(nodo.getNodoDer()!= null) {
+	    	 return	BuscarMayorSubArbolIzq2( nodo.getNodoDer());
+	    	}
+	    	else 
+	    	  return nodo;
+	    }
+	    
+	    public NodoBinario BuscarMenorSubArbolDer(NodoBinario nodo) {
+         
+	    	if (nodo.getNodoDer()!=null)	{
+        	return  BuscarMenorSubArbolDer2( nodo.getNodoDer());
+          }
+          else 
+            return nodo;
+	    	
+	    }
+	    
+	    public NodoBinario BuscarMenorSubArbolDer2(NodoBinario nodo) {
+	         
+	    	if (nodo.getNodoIzq()!=null)	{
+        	return  BuscarMenorSubArbolDer2( nodo.getNodoIzq());
+          }
+          else 
+            return nodo;
+	    	
+	    }
+	    
+	    private void EliminarRaiz (NodoBinario el) {
+	    	
+	    	
+	    	if (el.getNodoIzq()!=null && el.getNodoDer()!= null) {
+		    	
+			     if (el.getElemento()- BuscarMayorSubArbolIzq(el).getElemento()> BuscarMenorSubArbolDer(el).getElemento()-el.getElemento()) {
+			    	 
+			    	 //f1
+			    	 NodoBinario temp = BuscarMenorSubArbolDer(el);
+			    	 EliminarNodo (temp, raiz);
+			    	 raiz.setElemento(temp.getElemento());
+			    	 return;
+			    	 
+			    }
+			 	
+			     else if (el.getElemento()- BuscarMayorSubArbolIzq(el).getElemento()<= BuscarMenorSubArbolDer(el).getElemento()-el.getElemento()) {
+			    	 
+			    	 //f2
+			    	 NodoBinario temp = BuscarMayorSubArbolIzq(el);
+			    	 EliminarNodo (temp, raiz);
+			    	 raiz.setElemento(temp.getElemento());
+			    	 return;
+			    	 
+			     }
+			    }
+			    else if(el.getNodoIzq()==null) {
+			    	
+			    	//f1
+			    	 NodoBinario temp = BuscarMenorSubArbolDer(el);
+			    	 EliminarNodo (temp, raiz);
+			    	 raiz.setElemento(temp.getElemento());
+			    	 return;
+			    }
+			    else if(el.getNodoDer()==null) {
+			    	
+			    	//f2
+			    	 NodoBinario  temp = BuscarMayorSubArbolIzq(el);
+			    	 EliminarNodo (temp, raiz);
+			    	 raiz.setElemento(temp.getElemento());
+			    	 return;
+			    }
+			  
+	    	
+	    }
 	/*pendiente:
 	BuscarMayorSubArbolIzq(NodoBinario)
 	BuscarMenorSubArbolDer(NodoBinario)

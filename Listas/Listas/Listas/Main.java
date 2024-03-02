@@ -35,7 +35,7 @@ public class Main {
 				break;
 				}
 			
-			else if(respuesta.equalsIgnoreCase("arboles")) {
+			else if(respuesta.equalsIgnoreCase("a")) {
 			
 				NodoBinario n1 = new NodoBinario(1,null,null);
 				NodoBinario n3 = new NodoBinario(3,null,null);
@@ -47,17 +47,19 @@ public class Main {
 				
 				abb.InsertarNodo(6,root);
 				abb.InsertarNodo(7,root);
-				abb.EliminarNodo(n1,root);
+				System.out.println("Mayor elemento del sub arbol  izquierdo: "+ abb.BuscarMayorSubArbolIzq(root).getElemento());
+				System.out.println("Menor elemento del sub arbol  derecho: "+ abb.BuscarMenorSubArbolDer(root).getElemento() + "\n");
 				
-				System.out.println("Arbol en preorden:");
-				abb.ImprimirPreorden(root);
+				abb.EliminarNodo(root,root);
 				
-				System.out.println("\n" + "Arbol en inorden:");
-				abb.ImprimirInorden(root);
 				
-				System.out.println("\n" + "Arbol en postorden:");
-				abb.ImprimirPostorden(root);
-				
+				  System.out.println("Arbol en preorden:"); abb.ImprimirPreorden(root);
+				  
+				  System.out.println("\n" + "Arbol en inorden:"); abb.ImprimirInorden(root);
+				  
+				  System.out.println("\n" + "Arbol en postorden:");
+				  abb.ImprimirPostorden(root);
+				 
 				break;
 			}
 			else 
